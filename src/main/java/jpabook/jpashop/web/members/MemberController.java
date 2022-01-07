@@ -1,9 +1,9 @@
-package jpabook.jpashop.web;
+package jpabook.jpashop.web.members;
 
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.dto.MemberDto;
 import jpabook.jpashop.service.MemberService;
+import jpabook.jpashop.web.dto.MemberRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +22,13 @@ public class MemberController {
 
     @GetMapping("/members/new")
     public String createFrom(Model model) {
-        model.addAttribute("memberForm", new MemberDto());
+        model.addAttribute("memberForm", new MemberRequestDto());
 
         return "members/createMemberForm";
     }
 
     @PostMapping("/members/new")
-    public String createMember(@Valid MemberDto memberDto,
+    public String createMember(@Valid MemberRequestDto memberDto,
                                BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
