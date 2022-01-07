@@ -1,5 +1,6 @@
 package jpabook.jpashop.service;
 
+import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
@@ -25,8 +26,10 @@ class MemberServiceTest {
     @Test
     public void 회원가입() throws Exception {
         // given
+        Address address = new Address("ulsan", "street", "zipcode");
         Member member = new Member();
         member.setName("ssung");
+        member.setAddress(address);
 
         // when
         Long saveId = memberService.join(member);
